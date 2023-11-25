@@ -15,7 +15,18 @@ object GameActor {
   case class MoveThief(node: Int, replyTo: ActorRef[Response]) extends Command
   case class Reset(replyTo: ActorRef[Response]) extends Command
 
-
+  /**
+   *
+   * @param graph Original graph visible to police
+   * @param perturbedGraph Perturbed graph visible to thief
+   * @param valuableNodes Id of node with valuable data
+   * @param simRankData Simrank mappings from perturbed nodes to original nodes
+   * @param startNodePolice Node of the police
+   * @param startNodeThief Node of the thief
+   * @param chance Police/Thief
+   * @param winner Police/Thief if the game end condition is reached
+   * @return
+   */
   def apply(graph: Map[Int, List[Int]], perturbedGraph: Map[Int, List[Int]], valuableNodes: List[Int], simRankData:  Map[Int, (Int, Double)], startNodePolice: Int = 0, startNodeThief: Int = 1, chance: String = "police", winner: String = ""): Behavior[Command] = {
     val resDataDefault = ((("Police", startNodePolice), adjacentNodesDataPolice(graph = graph, police = startNodePolice, thief = startNodeThief, valuableNodes = valuableNodes)),
       (("Thief", startNodeThief), adjacentNodesDataThief(graph = graph, police = startNodePolice, thief = startNodeThief, valuableNodes = valuableNodes, simRankData)))

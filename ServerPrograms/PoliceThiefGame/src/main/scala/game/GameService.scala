@@ -21,6 +21,9 @@ import config_manager.ConfigManager
 import graph_utils.{LoadGraph, SimRank}
 import graph_utils.GraphUtils.getTwoCommonNodes
 
+/**
+ * This Object runs the API service on the specified port and interface
+ */
 object GameService {
   private val logger = LoggerFactory.getLogger(getClass)
   private val config = ConfigManager.getConfig
@@ -35,6 +38,9 @@ object GameService {
       map.asJson.noSpaces
     }
 
+  /**
+   * This function starts the game service at the specified port and interface
+   */
   def startGameService(): Unit = {
     implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "GameSystem")
     implicit val executionContext: ExecutionContextExecutor = system.executionContext

@@ -13,6 +13,10 @@ object ApiClient {
   private val backend = HttpURLConnectionBackend()
   private val apiUrl = config.getString("params.apiUrl").stripSuffix("/")
 
+  /**
+   * Function is used to reset the game
+   * @return returns the status of the game
+   */
   def gameReset(): StatusResponse = {
     val response = basicRequest.get(uri"$apiUrl/reset").send(backend)
 
@@ -28,6 +32,12 @@ object ApiClient {
     }
   }
 
+  /**
+   * This function makes the move for Thief/Police
+   * @param who Thief/Police
+   * @param node Node for next move
+   * @return
+   */
   def move(who: String, node: Int): StatusResponse = {
     Thread.sleep(3)
     val reqPath = s"$apiUrl/move/$who/$node"

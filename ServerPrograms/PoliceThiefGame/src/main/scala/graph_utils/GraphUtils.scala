@@ -5,11 +5,26 @@ import scala.util.Random
 
 object GraphUtils {
 
+  /**
+   * This function finds two common distinct nodes between the 2 graphs.
+   * @param g Original graph
+   * @param pg Perturbed graph
+   * @return
+   */
   def getTwoCommonNodes(g: Map[Int, List[Int]], pg: Map[Int, List[Int]]) : (Int, Int) ={
     val commonNodes = g.keySet.intersect(pg.keySet)
     val twoRandomNodes = Random.shuffle(commonNodes.toList).take(2)
     (twoRandomNodes(0), twoRandomNodes(1))
   }
+
+  /**
+   * This function returns adjacent node data for the police
+   * @param graph Original graph
+   * @param police Police node id
+   * @param thief Thief node id
+   * @param valuableNodes Valuable Node
+   * @return
+   */
   def adjacentNodesDataPolice(graph: Map[Int, List[Int]], police: Int, thief: Int, valuableNodes: List[Int]): Map[Int, (Int, Int)] = {
     val data = graph.getOrElse(police, Nil).map { node: Int =>
       val distanceToThief = findDistance(graph, node, thief)
@@ -25,6 +40,15 @@ object GraphUtils {
 
   }
 
+  /**
+   * This function returns adjacent node data for the police
+   * @param graph Original graph
+   * @param police Police node id
+   * @param thief Thief node id
+   * @param valuableNodes Valuable Node
+   * @param simRankData SimRank data
+   * @return
+   */
   def adjacentNodesDataThief(graph: Map[Int, List[Int]], police: Int, thief: Int, valuableNodes: List[Int], simRankData: Map[Int, (Int,Double)]): Map[Int, (Double, Int, Int)] = {
     graph.getOrElse(thief, Nil).filter(simRankData.contains).map { node: Int =>
       val distanceFromPolice = findDistance(graph, police, node)
@@ -33,8 +57,15 @@ object GraphUtils {
     }.toMap
   }
 
+  /**
+   * This function calculates distance between 2 nodes in a graph, returns -1 path does not exist
+   * @param graph any graph
+   * @param node1 start node
+   * @param node2 end node
+   * @return
+   */
   def findDistance(graph: Map[Int, List[Int]], node1: Int, node2: Int): Int = {
-    // Check if node1 is not present in the graph
+    // Check if node1 is not present in the graph for Police traps on perturbed graph
     if (!graph.contains(node1)) {
       return Random.nextInt(4) + 1
     }
@@ -67,6 +98,13 @@ object GraphUtils {
     -1
   }
 
+  /**
+   *
+   * @param graph any graph
+   * @param nodeId any node
+   * @param valuableNodes distance to valuable node
+   * @return
+   */
   def findClosestValuableNodeDistance(graph: Map[Int, List[Int]], nodeId: Int, valuableNodes: List[Int]): (Int, Option[Int]) = {
     // Create a set to keep track of visited nodes
     val visited = scala.collection.mutable.Set[Int]()
@@ -97,12 +135,4 @@ object GraphUtils {
 
     (minDistance, closestNode)
   }
-
-  /*
-  def findClosestValuableNode(graph: Map[Int, List[Int]], nodeIds: List[Int], valuableNodes: List[Int]): Map[Int, (Int, Int)] = {
-    nodeIds.map { nodeId =>
-      val (minDistance, closestNode) = findClosestValuableNodeDistance(graph, nodeId, valuableNodes)
-      nodeId -> (minDistance, closestNode.getOrElse(-1))
-    }.toMap
-  }*/
 }

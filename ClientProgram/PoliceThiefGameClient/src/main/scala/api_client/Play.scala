@@ -6,9 +6,18 @@ import org.slf4j.LoggerFactory
 
 import scala.annotation.tailrec
 
+
 object Play {
   val logger = LoggerFactory.getLogger(getClass)
 
+  /**
+   * Plays the game for give strategies
+   * @param status Current state
+   * @param chance Thief/Police
+   * @param policeStrategy Police strategy for choosing next node
+   * @param thiefStrategy Thief strategy for choosing next node
+   * @return
+   */
   @tailrec
   def play(status: StatusResponse, chance: String, policeStrategy: (StatusResponse) => Int, thiefStrategy: (StatusResponse) => Int): String = {
     if (status.message.toLowerCase.contains("game over")) {
@@ -21,6 +30,11 @@ object Play {
     }
   }
 
+  /**
+   * Plays the game for all combination of strategies for numberOfIterations
+   * @param numberOfIterations number of times each combination of strategy is played
+   * @return Result map with percentage of wins/losses for thief/police for different combination of strategies
+   */
   def runForIterations(numberOfIterations: Int): Map[String, Map[String, String]] = {
 
     def withStrategy(policeStrategy: (StatusResponse) => Int, thiefStrategy: (StatusResponse) => Int): (Double, Double) = {

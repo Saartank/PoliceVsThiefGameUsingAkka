@@ -7,7 +7,13 @@ object SimRank {
   val C = 0.9
   val ITERATIONS = 3
 
-
+  /**
+   *
+   * @param graph Graph for whose nodes SimRank is calculated
+   * @param reference_graph Reference graph which is used for comparison
+   * @param memo Cache which is used for memoization
+   * @return
+   */
   def simRank(graph: SerializedGraph, reference_graph: SerializedGraph, memo: mutable.Map[(Int, Int, Int), Double]): Map[Int, (Int, Double)] = {
 
     def calculateSimilarity(a: Int, b: Int, iteration: Int): Double = {
