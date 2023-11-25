@@ -177,6 +177,22 @@ An HTTP client is implemented to automatically play the game for a number of ite
 
 For each combination of police and thief strategies, the client plays the game for the specified number of iterations. It then saves the consolidated results for different strategy combinations in a YAML file. A sample YAML file is provided for reference.
 
+```YAML
+Naive police, Naive thief:
+  police: 31.00%
+  thief: 69.00%
+Naive police, Smart thief:
+  police: 21.80%
+  thief: 78.20%
+Smart police, Naive thief:
+  police: 74.60%
+  thief: 25.40%
+Smart police, Smart thief:
+  police: 65.70%
+  thief: 34.30%
+
+```
+
 # Deployment on AWS EC2 using Docker
 
 ## Building docker images
