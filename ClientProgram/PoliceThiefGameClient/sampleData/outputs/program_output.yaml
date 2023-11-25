@@ -1,0 +1,12 @@
+Naive police, Naive thief:
+  police: 31.90%
+  thief: 68.10%
+Naive police, Smart thief:
+  police: 28.90%
+  thief: 71.10%
+Smart police, Naive thief:
+  police: 67.80%
+  thief: 32.20%
+Smart police, Smart thief:
+  police: 67.80%
+  thief: 32.20%

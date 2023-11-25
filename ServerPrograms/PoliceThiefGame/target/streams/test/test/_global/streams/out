@@ -1,0 +1,21 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(AllTests, org.scalatest.tools.Framework$$anon$1@7f1eff7f, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAllTests:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32msimRank[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should calculate sim rank between nodes of the 2 graphs[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32msimRank[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return matching node and sim-score for each node in the graph[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mgetTwoCommonNodes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should output 2 distinct common nodes in the 2 graphs[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mfindDistance[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return correct distance between two connected nodes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return 0 when the nodes are the same[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return -1 for nodes not in graph[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mfindClosestValuableNodeDistance[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return find the closest valuable node and the distance to it[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 455 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 7[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 7, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	AllTests[0m

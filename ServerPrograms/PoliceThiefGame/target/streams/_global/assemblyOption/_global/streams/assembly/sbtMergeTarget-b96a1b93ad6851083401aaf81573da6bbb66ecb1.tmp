@@ -1,0 +1,26 @@
+network {
+    serverPort = 8080
+    bindInterface =  "0.0.0.0"
+}
+locations {
+    originalGraph = "./sampleData/original_graph.json"
+    perturbedGraph = "./sampleData/perturbed_graph.json"
+    analysisOutputDir = "./sampleData/outputs"
+}
+akka {
+  loglevel = "INFO"
+
+  logging-filter = "akka.event.slf4j.Slf4jLoggingFilter"
+
+  loggers = ["akka.event.slf4j.Slf4jLogger"]
+
+  actor {
+    debug {
+      receive = on
+      autoreceive = on
+      lifecycle = on
+      event-stream = on
+      unhandled = on
+    }
+  }
+}
