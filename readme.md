@@ -237,7 +237,7 @@ The Docker images for the project have been pushed to my DockerHub repository. T
 
    - Create an EC2 instance.
    - SSH into the instance using: `ssh -i {path_to_ssh_key} ec2-user@{ec2_ip}`.
-   - Add an inbound rule for port 8080 with Anywhere-IPv4 in the EC2 security group.
+   - Add an inbound rule for port 8080 with Anywhere-IPv4 in the EC2 security group **(this may take a few minutes to take effect)**.
 
 2. **Set Up `docker-compose.yml`**:
 
